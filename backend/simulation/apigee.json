@@ -1,0 +1,57 @@
+{
+  "organization": "gosi-nonprod",
+  "environment": "test",
+  "exportedAt": "2026-10-12T08:00:00Z",
+  "proxies": [
+    {
+      "name": "contributor-inquiry",
+      "revision": "7",
+      "basePath": "/contributor/v1",
+      "virtualHost": "api-test.gosi.gov.sa",
+      "targetServer": "esb-contributor-v2",
+      "owner": "Data Services",
+      "flows": [
+        {
+          "name": "GetContributor",
+          "condition": "(proxy.pathsuffix MatchesPath \"/contributors/*\") and (request.verb = \"GET\")"
+        },
+        {
+          "name": "ListContributorEngagements",
+          "condition": "(proxy.pathsuffix MatchesPath \"/contributors/*/engagements\") and (request.verb = \"GET\")"
+        }
+      ]
+    },
+    {
+      "name": "pension-inquiry",
+      "revision": "12",
+      "basePath": "/pension/v1",
+      "virtualHost": "api-test.gosi.gov.sa",
+      "targetServer": "inquiry-pension",
+      "owner": "Data Services",
+      "flows": [
+        {
+          "name": "GetPensionDetails",
+          "condition": "(proxy.pathsuffix MatchesPath \"/pensions/*\") and (request.verb = \"GET\")"
+        },
+        {
+          "name": "CheckPensionEligibility",
+          "condition": "(proxy.pathsuffix MatchesPath \"/pensions/eligibility\") and (request.verb = \"POST\")"
+        }
+      ]
+    },
+    {
+      "name": "establishment-registry",
+      "revision": "3",
+      "basePath": "/establishment/v1",
+      "virtualHost": "api-test.gosi.gov.sa",
+      "targetServer": "denodo-establishment",
+      "owner": "Data Services",
+      "flows": [
+        {
+          "name": "SearchEstablishments",
+          "condition": "(proxy.pathsuffix MatchesPath \"/establishments\") and (request.verb = \"GET\")"
+        }
+      ]
+    }
+  ]
+}

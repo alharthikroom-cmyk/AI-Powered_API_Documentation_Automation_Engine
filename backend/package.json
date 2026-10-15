@@ -1,0 +1,54 @@
+{
+  "name": "gosi-api-doc-engine-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend for the GOSI API Documentation Engine: Apigee metadata + Splunk samples -> GOSI Brain -> reviewed OpenAPI specs",
+  "scripts": {
+    "build": "nest build",
+    "start": "node dist/main.js",
+    "start:dev": "nest start --watch",
+    "test": "jest",
+    "ai:check": "ts-node --transpile-only scripts/ai-check.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "0.79.0",
+    "@nestjs/common": "11.1.6",
+    "@nestjs/config": "4.0.2",
+    "@nestjs/core": "11.1.6",
+    "@nestjs/platform-express": "11.1.6",
+    "@nestjs/serve-static": "5.0.3",
+    "@nestjs/typeorm": "11.0.0",
+    "reflect-metadata": "0.2.2",
+    "rxjs": "7.8.2",
+    "sql.js": "1.13.0",
+    "typeorm": "0.3.26",
+    "undici": "6.21.3",
+    "dotenv": "16.4.7"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "11.0.10",
+    "@nestjs/schematics": "11.0.7",
+    "@nestjs/testing": "11.1.6",
+    "@types/express": "5.0.3",
+    "@types/jest": "29.5.14",
+    "@types/node": "22.18.0",
+    "@types/sql.js": "1.4.9",
+    "jest": "29.7.0",
+    "ts-jest": "29.4.1",
+    "ts-node": "10.9.2",
+    "typescript": "5.8.3"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": ".",
+    "testRegex": "test/.*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testEnvironment": "node"
+  }
+}
